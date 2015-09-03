@@ -38,6 +38,8 @@ gem 'spring',        group: :development
 
 gem 'bundler'
 
+gem 'bower-rails'
+
 group :development do
   gem 'better_errors'
 end
