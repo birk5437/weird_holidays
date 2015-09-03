@@ -1,0 +1,272 @@
+/*
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+* or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any styles
+* defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+* file per style scope.
+*
+*= require_tree .
+*= require token-input
+*=  require token-input-mac
+*=  require token-input-facebook
+*= require_self
+*/
+@import "bootstrap_configuration";
+
+@import "bootstrap-sprockets";
+
+@import "bootstrap";
+
+#items .item {
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: linear-gradient(to bottom, #F6F6F6 0%, #EAEAEA 100%) repeat scroll 0 0 transparent;
+    border-radius: 4px 4px 4px 4px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 2px 1px rgba(0, 0, 0, 0.1), 0 3px 1px rgba(0, 0, 0, 0.05);
+    text-shadow: 0 1px 0 #DDDDDD;
+    width: 270px;
+    margin: 10px;
+    float: left;
+}
+
+#items .item .picture .description {
+    margin-top: 10px;
+}
+
+#items .item .picture {
+    display: block;
+    position: relative;
+    z-index: 5;
+    border-top: 1px solid #999999;
+    border-radius: 4px 4px 4px 4px;
+}
+
+#items .item .picture a.image {
+    display: block;
+    height: auto;
+    width: 100%;
+}
+
+#items .item .picture img {
+    border-radius: 2px 2px 0px 0px;
+    height: auto;
+    position: relative;
+    width: 100%;
+    z-index: -1;
+}
+
+.picture img {
+    height: auto;
+    width: 100%;
+}
+
+
+#items .item .meta span {
+    font-size: 12px !important;
+    line-height: 16px !important;
+    margin-right: 5px;
+    &.price {
+      font-size: 16px !important;
+      font-weight: 300;
+    }
+}
+
+
+#items .item .item-content {
+  padding: 10px;
+}
+
+#items .item .picture .description {
+    margin-top: 10px;
+}
+
+
+body {
+  color: #000000;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: 400;
+  background-color: #CCCCCC;
+}
+
+.navbar-default {
+  box-shadow: 0px 5px 10px #999 !important;
+}
+
+.btn-green-with-white {
+  // fd5b1b
+  @include button-variant(white, #0e8830, #0e8830);
+  box-shadow: 3px 3px 3px #888888;
+  position: relative;
+  top: -10px;
+
+}
+
+//->Prelang (ui_framework:twitter_bootstrap)
+
+// Give everything in 'yield' margin to separate it.
+.yield {
+  margin: 30px;
+}
+
+// Constrain forms for models (scaffolded models) so they aren't full page width.
+.form-model {
+  max-width: 750px;
+}
+
+//->Prelang (user_login:devise)
+.form-user {
+  max-width: 450px;
+}
+
+
+@media (max-width: 767px){
+  .lead, h4, p, .buttons-center{
+    text-align: center;
+  }
+}
+
+.image-list {
+  overflow: scroll;
+  // overflow-y: scroll;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+.transparent-purple {
+  color: #000000;
+  background-color: #444444;
+
+  padding-bottom: .5em;
+  padding-top: .5em;
+  padding-left: 1.0em;
+  padding-right: 1.0em;
+
+  /* Fallback for web browsers that don't support RGBa */
+  background-color: rgb(200, 100, 100);
+
+  background-color: rgba(91,27,253, 0.8);
+  // background-color: rgba(200, 200, 200, 0.9);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+
+  -moz-border-radius:10px;  /* for Firefox */
+  -webkit-border-radius:10px; /* for Webkit-Browsers */
+  border-radius:10px; /* regular */
+
+}
+
+.transparent-black {
+  padding-bottom: .5em;
+  padding-top: .1em;
+  padding-left: 1.0em;
+  margin-left: 1em;
+
+  /* Fallback for web browsers that don't support RGBa */
+  background-color: rgb(100, 100, 100);
+  /* RGBa with 0.6 opacity */
+  background-color: rgba(0, 0, 0, 0.7);
+  /* For IE 5.5 - 7*/
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000);
+  /* For IE 8*/
+  -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#99000000, endColorstr=#99000000)";
+
+  -moz-border-radius:10px;  /* for Firefox */
+  -webkit-border-radius:10px; /* for Webkit-Browsers */
+  border-radius:10px; /* regular */
+  // opacity:0.8; /* Transparent Background 50% */
+  // background-color: #cccccc;
+
+  // h1 { opacity: 1.0; }
+}
+
+// ::-webkit-scrollbar {
+//   -webkit-appearance: none;
+//   width: 7px;
+// }
+// ::-webkit-scrollbar-thumb {
+//   border-radius: 4px;
+//   background-color: rgba(0, 0, 0, .5);
+//   -webkit-box-shadow: 0 0 1px rgba(255, 255, 255, .5);
+// }
+
+// http://work.smarchal.com/twbscolor/css/e74c3cc0392becf0f1ffbbbc0
+//$bgDefault      : #9b59b6;
+$bgDefault      : #000000;
+// $bgHighlight    : #c070e2;
+$bgHighlight    : #000000;
+// $colDefault     : #fed875;
+$colDefault     : #a4e402;
+$colHighlight   : #f9f8fe;
+$dropDown       : false;
+$navbarTextColor: #a4e402;
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $navbarTextColor;
+    // color: $colDefault;
+    &:hover, &:focus { 
+      color: $colHighlight; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight; }}
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          > li > a {
+            color: $colDefault;
+            &:hover,  &:focus {
+              color: $colHighlight;
+              background-color: $bgHighlight; }}
+          .divider {
+            background-color: $bgHighlight;}}}
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus, {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+}

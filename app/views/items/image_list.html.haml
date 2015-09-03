@@ -1,0 +1,5 @@
+%table
+  %tr
+    - images.each do |image_url|
+      %td
+        %img{ src: "#{image_url}", style: "max-width: 140px;" }
