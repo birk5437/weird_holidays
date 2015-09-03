@@ -1,47 +1,6 @@
--# http://www.responsivewebmobile.com/posts/view/2013/06/04/5/Responsive_Pin_Page_templates_free
-
-- model_class = Item
-
-#items
-  - @items.each do |item|
-    .item.masonry-brick
-      %h5.text-center
-        - truncated_title = truncate(item.title, length: 40, omission: "", separator: " ")
-        = link_to(truncated_title, item.affiliate_url, target: "_blank")
-      .picture
-        %a.image{:href => item.affiliate_url, :title => "Title", target: "_blank"}
-          %img{:alt => "", :src => item.thumbnail}/
-        .item-content
-          .description
-            %p= item.description
-          .meta
-            %span.price
-              -#%i.icon-calendar
-              = money_format(item.price)
-            %span
-              -#%i.icon-user
-              %a.btn.btn-green-with-white{href: item.affiliate_url, style: "float: right;", target: "_blank"} I want one!
-            -#%span
-            -#  %i.icon-heart-empty
-            -#  10
-          - if current_user.present? && (current_user.admin? || item.created_by == current_user || current_user.superuser?)
-            .meta
-              %span
-                - if current_user.admin?
-                  = link_to "Info", item_path(item)#, {:class => "btn btn-default"}
-                - if (item.created_by == current_user) || current_user.superuser?
-                  = link_to "Edit", edit_item_path(item)#, {:class => "btn btn-primary"}
-                  = link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        item_path(item),
-                        :method => 'delete',
-                        :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
+#calendar
 
 :javascript
-  var $container = $('#items');
-      $container.imagesLoaded(function(){
-      $container.masonry({
-        itemSelector : '.item',
-        columnWidth : 290,
-        isAnimated: true
-      });
-    });
+  $(document).ready(function() {
+    $("#calendar").fullCalendar({});
+  });

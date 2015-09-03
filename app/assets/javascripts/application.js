@@ -15,5 +15,8 @@
 //= require bootstrap
 //= require underscore
 //= require jquery.tokeninput
+//= require moment/moment
+//= require fullcalendar/dist/fullcalendar
+
 
 //= require_tree .
