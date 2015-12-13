@@ -2,5 +2,8 @@
 
 :javascript
   $(document).ready(function() {
-    $("#calendar").fullCalendar({});
+    $("#calendar").fullCalendar({
+      events:
+        #{Item.all.map{ |item| {title: item.title, start: item.start_date.strftime('%Y-%m-%d'), end: item.end_date.strftime('%Y-%m-%d')}}.to_json}
+    });
   });

@@ -23,8 +23,6 @@
     %ul.nav.navbar-nav.navbar-right
       - if defined?(Devise)
         - if user_signed_in?
-          - if current_user.superuser?
-            %li= link_to "Get Items from Reddit!", get_listings_items_path, :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) }
           - if current_user.admin?
             %li= link_to "Add New Item", new_item_path
           %li.dropdown

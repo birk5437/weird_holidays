@@ -2,44 +2,21 @@
   = @item.errors.full_messages.join("<br />").html_safe
 = form_for @item, :html => { :class => 'form-horizontal form-model' } do |f|
   .form-group
-    = f.label :url, :class => 'control-label col-md-2'
-    .col-md-10
-      = f.text_field :url, :class => 'text-field form-control', autocomplete: "off"
-  .form-group
-    %div.col-md-2
-      %label.control-label Thumbnail Image
-    %div.col-md-10
-      #image_form_group
-
-      %div.selected-image.hide
-        #image_selection
-          - if @item.thumbnail.present?
-            %img{src: @item.thumbnail, style: "width: 100%; max-width: 140px;"}
-          - else
-            %img{style: "width: 100%; max-width: 140px;"}
-        = link_to "Select a Different Image", "#", id: "select_different_image_link"
-
-  = f.hidden_field :thumbnail
-  .form-group
     = f.label :title, :class => 'control-label col-md-2'
     .col-md-10
       = f.text_field :title, :class => 'text-field form-control'
-  .form-group
-    = f.label :tag_list, :class => 'control-label col-md-2'
-    .col-md-10
-      = f.text_field :tag_list, :class => 'text-field form-control', "data-pre" => @item.tag_list.map{ |t_name| Tag.find_or_initialize_by(name: t_name) }.to_json
   .form-group
     = f.label :description, :class => 'control-label col-md-2'
     .col-md-10
       = f.text_area :description, :class => 'text-field form-control'
   .form-group
-    = f.label :price, :class => 'control-label col-md-2'
+    = f.label :start_date, :class => 'control-label col-md-2'
     .col-md-10
-      = f.text_field :price, :class => 'text-field form-control', placeholder: "19.99"
+      = f.date_select :start_date, :class => 'text-field form-control'
   .form-group
-    = f.label :sort_order, :class => 'control-label col-md-2'
+    = f.label :end_date, :class => 'control-label col-md-2'
     .col-md-10
-      = f.text_field :sort_order, :class => 'text-field form-control'
+      = f.date_select :end_date, :class => 'text-field form-control'
   .form-group
     .col-md-offset-2.col-md-10
       = f.submit nil, :class => 'btn btn-primary'
@@ -48,82 +25,4 @@
 
 :javascript
   $(document).ready(function(){
-    $("#item_tag_list").tokenInput('/tags.json', {
-      prePopulate: $("#item_tag_list").data('pre'),
-      crossDomain: false,
-      tokenValue: "name",
-      preventDuplicates: true,
-      theme: 'facebook'
-    });
-
-    $(".selected-image").removeClass("hide");
-
-    if ( $("#image_selection > img").prop("src") ) {
-    } else {
-      $(".selected-image").hide();
-      bind_keyup();
-    }
-
-    $("#select_different_image_link").on('click', function(e){
-      e.preventDefault();
-      $(".selected-image").hide();
-      bind_keyup();
-      $("#item_thumbnail").val("");
-      trigger_keyup();
-    });
-
-    if ($("#item_url").val()) {
-      trigger_keyup();
-    }
-
-
-
   });
-
-  function trigger_keyup() {
-    _.defer(function(){
-      $("#item_url").trigger("keyup");
-    });
-  }
-
-  function bind_keyup() {
-    $("#item_url").off('keyup').on('keyup', _.debounce(function() {
-      $("#image_form_group").hide();
-      jQuery.ajax({
-        type: "GET",
-        url: "/items/get_image_list?url=" + $(this).val()
-      }).done(function(html) {
-        $("#image_form_group").html(html);
-
-        var $imageList = $(".image-list");
-        if ( !$("#item_price").val() ){
-          $("#item_price").val($imageList.attr("product_price"));
-        }
-
-        if ( !$("#item_title").val() ){
-          $("#item_title").val($imageList.attr("product_title"));
-        }
-
-        $("img").off('click').on('click', function(e){
-          $("#item_url").off("keyup");
-          $(".image-list").hide();
-          $(".image-list-title").hide();
-          $("#image_selection > img").prop("src", $(this).prop("src"));
-          $("#item_thumbnail").val($(this).prop("src"));
-          $(".selected-image").show();
-        });
-        $("#image_form_group").fadeIn('fast');
-      }).fail(function(response) {
-        $("#item_thumbnail").val("");
-        $("#image_form_group").html(response.responseText);
-        $("#image_form_group").fadeIn('fast');
-
-        $("#item_images_loading_retry_link").off('click').on('click', function(e){
-          e.preventDefault();
-          $("#image_form_group").html("");
-          $("#item_url").trigger("keyup");
-        });
-
-      });
-    }, 300));
-  }

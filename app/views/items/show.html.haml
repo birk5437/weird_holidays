@@ -1,28 +1,15 @@
 - model_class = Item
 .page-header
-  %h1
-    Item Info
-  %img{ src: "#{@item.thumbnail}", style: "width: 100%; max-width: 140px;" }
 .fieldset
   %dl
-    %dt.label.label-default= model_class.human_attribute_name(:url)
-    %dd
-      %pre.prettyprint= @item.url
-    %dt.label.label-default= model_class.human_attribute_name(:thumbnail)
-    %dd
-      %pre.prettyprint= @item.thumbnail
+
+
     %dt.label.label-default= model_class.human_attribute_name(:title)
     %dd
       %pre.prettyprint= @item.title
     %dt.label.label-default= model_class.human_attribute_name(:description)
     %dd
       %pre.prettyprint= @item.description
-    %dt.label.label-default= model_class.human_attribute_name(:price)
-    %dd
-      %pre.prettyprint= @item.price
-    %dt.label.label-default= model_class.human_attribute_name(:sort_order)
-    %dd
-      %pre.prettyprint= @item.sort_order
 .form-group
   = link_to t('.back', :default => t("helpers.links.back")), |
     items_path, :class => 'btn btn-success'                  |
